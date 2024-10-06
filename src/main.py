@@ -13,15 +13,9 @@ names = {
 class HelloWorld(Resource):
     def get(self, name):
         return names[name]
-
-    def post(self, name, age, gender):
-        if name not in names:
-            names[name] = {"age": age, "gender": gender}
-
-        return names[name]
     
 
-api.add_resource(HelloWorld, "/helloworld/<string:name>/<int:age>/<string:gender>")
+api.add_resource(HelloWorld, "/helloworld/<string:name>")
 
 if __name__ == "__main__":
     app.run(debug=True)
